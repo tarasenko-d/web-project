@@ -20,7 +20,7 @@ public class GetUserByIdController {
 
     private final PersonService personService;
 
-    @PostMapping
+    @PostMapping(path = "/user/getById")
     public IntegrationMessage getUserById(@RequestBody IntegrationMessage<GetUserByIdRequest> request) {
         try {
             Long payload = Optional.ofNullable(request)

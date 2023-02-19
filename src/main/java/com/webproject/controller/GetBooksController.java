@@ -21,7 +21,7 @@ public class GetBooksController {
 
     private final BookService bookService;
 
-    @PostMapping
+    @PostMapping(path = "/book/getAll")
     public IntegrationMessage getBooks(@RequestBody IntegrationMessage<GetBooksRequest> request) {
         try {
             GetBooksRequest.PaginationInfo payload = Optional.ofNullable(request)

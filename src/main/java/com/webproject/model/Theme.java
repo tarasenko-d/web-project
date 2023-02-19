@@ -1,6 +1,6 @@
 package com.webproject.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 

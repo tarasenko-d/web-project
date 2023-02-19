@@ -2,7 +2,7 @@ package com.webproject.service;
 
 import com.webproject.dao.AuthorRepo;
 import com.webproject.model.Author;
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

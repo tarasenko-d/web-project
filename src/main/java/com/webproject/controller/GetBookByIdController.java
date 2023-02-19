@@ -20,7 +20,7 @@ public class GetBookByIdController {
 
     private final BookService bookService;
 
-    @PostMapping
+    @PostMapping(path = "/book/getById")
     public IntegrationMessage getBookById(@RequestBody IntegrationMessage<GetBookByIdRequest> request) {
         try {
             Long payload = Optional.ofNullable(request)

@@ -20,7 +20,7 @@ public class CreateBookController {
 
     private final BookService bookService;
 
-    @PostMapping
+    @PostMapping(path = "/book/create")
     public IntegrationMessage createBook(@RequestBody IntegrationMessage<CreateBookRequest> request) {
         try {
             CreateBookRequest.BookInfo payload = Optional.ofNullable(request)
