@@ -3,6 +3,7 @@ package com.webproject.dto;
 import com.webproject.dto.response.GetBookByIdResponse;
 import com.webproject.dto.response.GetBooksResponse;
 import com.webproject.dto.response.GetUserByIdResponse;
+import com.webproject.model.Author;
 import com.webproject.model.Book;
 import com.webproject.model.Person;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class IntegrationMessage<T> {
     private T payload;
     private Fault fault;
 
-    public static IntegrationMessage<GetBooksResponse> successResponse(List<Book> bookList) {
+    public static IntegrationMessage<GetBooksResponse> successResponse(List<Author> bookList) {
         return successResponse(bookList);
     }
 
