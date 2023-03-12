@@ -2,7 +2,9 @@ package com.webproject.dto;
 
 import com.webproject.dto.response.GetBookByIdResponse;
 import com.webproject.dto.response.GetBooksResponse;
+import com.webproject.dto.response.GetNAuthorsAlphabetResponse;
 import com.webproject.dto.response.GetUserByIdResponse;
+import com.webproject.model.Author;
 import com.webproject.model.Book;
 import com.webproject.model.Person;
 import lombok.Data;
@@ -16,8 +18,8 @@ public class IntegrationMessage<T> {
     private T payload;
     private Fault fault;
 
-    public static IntegrationMessage<GetBooksResponse> successResponse(List<Book> bookList) {
-        return successResponse(bookList);
+    public static IntegrationMessage successResponse(List list) {
+        return successResponse(list);
     }
 
     public static IntegrationMessage<GetUserByIdResponse> successResponse(Person person) {
@@ -54,8 +56,10 @@ public class IntegrationMessage<T> {
 
     private static <T> IntegrationMessage<T> successResponse(T data) {
         IntegrationMessage<T> response = new IntegrationMessage<>();
+
         response.setPayload(data);
         response.setStatus(Status.SUCCESS);
+
         return response;
     }
 

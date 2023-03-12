@@ -2,8 +2,9 @@ package com.webproject.controller;
 
 import com.webproject.dto.IntegrationMessage;
 import com.webproject.dto.request.GetNAuthorsAlphabetRequest;
+import com.webproject.model.Author;
 import com.webproject.model.Book;
-import com.webproject.service.BookService;
+import com.webproject.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,21 +19,21 @@ import static java.util.Objects.isNull;
 @SuppressWarnings("rawtypes")
 @RequiredArgsConstructor
 public class GetNAuthorsAlphabetController {
-    private final BookService bookService;
+    private final AuthorService authorService;
 
-    @PostMapping(path = "/book/getAlphabetically")
-    public IntegrationMessage getBooks(@RequestBody IntegrationMessage<GetNAuthorsAlphabetRequest> request) {
+    @PostMapping(path = "/authors/getAlphabetically")
+    public IntegrationMessage getAlphabetically(@RequestBody IntegrationMessage<GetNAuthorsAlphabetRequest> request) {
         try {
-            Long payload = Optional.ofNullable(request)
+            Long count = Optional.ofNullable(request)
                     .map(IntegrationMessage::getPayload)
                     .map(GetNAuthorsAlphabetRequest::getAuthorsQuantity)
                     .orElse(null);
 
-            if (isNull(payload)) {
+            if (isNull(count) || count.intValue() == 0) {
                 return IntegrationMessage.errorResponse("Payload is not present");
             }
 
-            List<Book> books = bookService.getNBooksAlphabetically(payload);
+            List<Author> books = authorService.getAlphabetically(count);
 
             return IntegrationMessage.successResponse(books);
         } catch (Exception exception) {

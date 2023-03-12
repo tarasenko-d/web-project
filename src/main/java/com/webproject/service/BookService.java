@@ -11,7 +11,6 @@ import com.webproject.service.util.BookProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,12 +18,10 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class BookService {
-
     private final BookRepo bookRepo;
     private final AuthorService authorService;
     private final TagService tagService;
@@ -35,11 +32,6 @@ public class BookService {
 
         Page<Book> all = bookRepo.findAll(pageable);
         return all.getContent();
-    }
-
-    public List<Book> getNBooksAlphabetically(Long bookQuantity) {
-        List<Book> allBooks = bookRepo.findAll(Sort.by(Sort.Direction.ASC, "author"));
-        return allBooks.stream().limit(bookQuantity).collect(Collectors.toList());
     }
 
     public Book getById(Long id) {
