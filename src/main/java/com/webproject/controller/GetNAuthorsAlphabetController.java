@@ -30,14 +30,14 @@ public class GetNAuthorsAlphabetController {
                     .orElse(null);
 
             if (isNull(count) || count.intValue() == 0) {
-                return IntegrationMessage.errorResponse("Payload is not present");
+                return IntegrationMessage.errorResponse("Payload is not present", request);
             }
 
             List<Author> books = authorService.getAlphabetically(count);
 
-            return IntegrationMessage.successResponse(books);
+            return IntegrationMessage.successResponse(books, request);
         } catch (Exception exception) {
-            return IntegrationMessage.exceptionResponse(exception.getMessage());
+            return IntegrationMessage.exceptionResponse(exception.getMessage(), request);
         }
     }
 }

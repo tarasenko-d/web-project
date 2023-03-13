@@ -1,6 +1,7 @@
 package com.webproject.service;
 
 import com.webproject.dao.AuthorRepo;
+import com.webproject.dto.request.CreateAuthorRequest;
 import com.webproject.model.Author;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,15 @@ import java.util.Optional;
 public class AuthorService {
 
     private final AuthorRepo authorRepo;
+
+    public Author createAuthor(CreateAuthorRequest.AuthorInfo info) {
+        Author author = new Author();
+        author
+                .setBirthDate(info.getBirthDate())
+                .setName(info.getName());
+
+        return authorRepo.save(author);
+    }
 
     public Author getByName(String name) {
         Optional<Author> modelOptional = authorRepo.getAuthorByName(name);

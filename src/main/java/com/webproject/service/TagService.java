@@ -2,10 +2,10 @@ package com.webproject.service;
 
 import com.webproject.dao.TagRepo;
 import com.webproject.model.Tag;
-import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,5 +24,11 @@ public class TagService {
         }
 
         return new HashSet<>(tags);
+    }
+
+    public Tag createTag(String title) {
+        Tag tag = new Tag().setTitle(title);
+
+        return tagRepo.save(tag);
     }
 }

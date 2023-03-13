@@ -2,10 +2,10 @@ package com.webproject.service;
 
 import com.webproject.dao.ThemeRepo;
 import com.webproject.model.Theme;
-import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,5 +30,11 @@ public class ThemeService {
         }
 
         return new HashSet<>(tags);
+    }
+
+    public Theme createTheme(Theme.ThemeEnum themeEnum) {
+        Theme theme = new Theme().setName(themeEnum);
+
+        return themeRepo.save(theme);
     }
 }

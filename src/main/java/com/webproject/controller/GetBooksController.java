@@ -30,14 +30,14 @@ public class GetBooksController {
                     .orElse(null);
 
             if (isNull(payload)) {
-                return IntegrationMessage.errorResponse("Payload is not present");
+                return IntegrationMessage.errorResponse("Payload is not present", request);
             }
 
             List<Book> books = bookService.getBooks(payload);
 
-            return IntegrationMessage.successResponse(books);
+            return IntegrationMessage.successResponse(books, request);
         } catch (Exception exception) {
-            return IntegrationMessage.exceptionResponse(exception.getMessage());
+            return IntegrationMessage.exceptionResponse(exception.getMessage(), request);
         }
     }
 }

@@ -29,14 +29,14 @@ public class GetBookByIdController {
                     .orElse(null);
 
             if (isNull(payload)) {
-                return IntegrationMessage.errorResponse("Payload is not present");
+                return IntegrationMessage.errorResponse("Payload is not present", request);
             }
 
             Book book = bookService.getById(payload);
 
-            return IntegrationMessage.successResponse(book);
+            return IntegrationMessage.successResponse(book, request);
         } catch (Exception exception) {
-            return IntegrationMessage.exceptionResponse(exception.getMessage());
+            return IntegrationMessage.exceptionResponse(exception.getMessage(), request);
         }
     }
 }

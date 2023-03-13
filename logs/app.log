@@ -1,34 +1,26 @@
-2023-02-19 13:52:22,964 INFO  [main] com.webproject.WebProjectApplication : Starting WebProjectApplication using Java 11.0.16.1 on LAPTOP-O9NR0R4V with PID 7632 (C:\Users\kemen\Desktop\hzcode\web-project\target\classes started by kemen in C:\Users\kemen\Desktop\hzcode\web-project)
-2023-02-19 13:52:22,966 INFO  [main] com.webproject.WebProjectApplication : No active profile set, falling back to 1 default profile: "default"
-2023-02-19 13:52:23,319 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-19 13:52:23,369 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 6 JPA repository interfaces.
-2023-02-19 13:52:23,776 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8081 (http)
-2023-02-19 13:52:23,783 INFO  [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
-2023-02-19 13:52:23,783 INFO  [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2023-02-19 13:52:23,851 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
-2023-02-19 13:52:23,851 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 846 ms
-2023-02-19 13:52:23,872 INFO  [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
-2023-02-19 13:52:23,986 INFO  [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
-2023-02-19 13:52:23,995 INFO  [main] org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2023-02-19 13:52:24,050 WARN  [main] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'createBookController' defined in file [C:\Users\kemen\Desktop\hzcode\web-project\target\classes\com\webproject\controller\CreateBookController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService' defined in file [C:\Users\kemen\Desktop\hzcode\web-project\target\classes\com\webproject\service\BookService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'bookRepo' defined in com.webproject.dao.BookRepo defined in @EnableJpaRepositories declared on WebProjectApplication: Cannot create inner bean '(inner bean)#14422d9d' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#14422d9d': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'entityManagerFactory' available
-2023-02-19 13:52:24,050 INFO  [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
-2023-02-19 13:52:24,053 INFO  [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
-2023-02-19 13:52:24,055 INFO  [main] org.apache.catalina.core.StandardService : Stopping service [Tomcat]
-2023-02-19 13:52:24,064 INFO  [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-02-19 13:52:24,079 ERROR [main] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Parameter 0 of constructor in com.webproject.service.BookService required a bean named 'entityManagerFactory' that could not be found.
-
-
-Action:
-
-Consider defining a bean named 'entityManagerFactory' in your configuration.
-
+2023-03-12 23:07:07,515 INFO  [main] com.webproject.WebProjectApplication : Starting WebProjectApplication using Java 11.0.16.1 on LAPTOP-O9NR0R4V with PID 21220 (C:\Users\kemen\Desktop\hzcode\web-project\target\classes started by kemen in C:\Users\kemen\Desktop\hzcode\web-project)
+2023-03-12 23:07:07,523 INFO  [main] com.webproject.WebProjectApplication : No active profile set, falling back to 1 default profile: "default"
+2023-03-12 23:07:08,107 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-12 23:07:08,176 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 6 JPA repository interfaces.
+2023-03-12 23:07:08,637 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 8081 (http)
+2023-03-12 23:07:08,646 INFO  [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2023-03-12 23:07:08,646 INFO  [main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-03-12 23:07:08,752 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2023-03-12 23:07:08,752 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1180 ms
+2023-03-12 23:07:08,778 INFO  [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2023-03-12 23:07:08,905 INFO  [main] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2023-03-12 23:07:08,925 INFO  [main] org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2023-03-12 23:07:09,078 INFO  [main] org.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-12 23:07:09,112 INFO  [main] org.hibernate.Version : HHH000412: Hibernate ORM core version 5.6.11.Final
+2023-03-12 23:07:09,223 INFO  [main] org.hibernate.annotations.common.Version : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-03-12 23:07:09,296 INFO  [main] org.hibernate.dialect.Dialect : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-03-12 23:07:09,844 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-12 23:07:09,852 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-12 23:07:10,190 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-12 23:07:10,398 INFO  [main] org.springframework.security.web.DefaultSecurityFilterChain : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@105fe81e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@af94b0b, org.springframework.security.web.context.SecurityContextPersistenceFilter@7e7391e8, org.springframework.security.web.header.HeaderWriterFilter@411933, org.springframework.security.web.authentication.logout.LogoutFilter@1b06dc57, com.webproject.config.security.JwtFilter@3151277f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4229b92c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@197180a5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@208185c0, org.springframework.security.web.session.SessionManagementFilter@1fcfcf37, org.springframework.security.web.access.ExceptionTranslationFilter@28b68067, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@20a25f66]
+2023-03-12 23:07:10,724 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 8081 (http) with context path ''
+2023-03-12 23:07:10,736 INFO  [main] com.webproject.WebProjectApplication : Started WebProjectApplication in 3.705 seconds (JVM running for 4.733)
+2023-03-12 23:07:23,530 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-03-12 23:07:23,531 INFO  [SpringApplicationShutdownHook] org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-03-12 23:07:23,562 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2023-03-12 23:07:23,566 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.

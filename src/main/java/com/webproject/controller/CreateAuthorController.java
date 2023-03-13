@@ -1,9 +1,9 @@
 package com.webproject.controller;
 
 import com.webproject.dto.IntegrationMessage;
-import com.webproject.dto.request.GetUserByIdRequest;
-import com.webproject.model.Person;
-import com.webproject.service.PersonService;
+import com.webproject.dto.request.CreateAuthorRequest;
+import com.webproject.model.Author;
+import com.webproject.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,28 +16,27 @@ import static java.util.Objects.isNull;
 @RestController
 @SuppressWarnings("rawtypes")
 @RequiredArgsConstructor
-public class GetUserByIdController {
+public class CreateAuthorController {
 
-    private final PersonService personService;
+    private final AuthorService authorService;
 
-    @PostMapping(path = "/users/getById")
-    public IntegrationMessage getUserById(@RequestBody IntegrationMessage<GetUserByIdRequest> request) {
+    @PostMapping(path = "/author/create")
+    public IntegrationMessage createAuthor(@RequestBody IntegrationMessage<CreateAuthorRequest> request) {
         try {
-            Long payload = Optional.ofNullable(request)
+            CreateAuthorRequest.AuthorInfo payload = Optional.ofNullable(request)
                     .map(IntegrationMessage::getPayload)
-                    .map(GetUserByIdRequest::getUserId)
+                    .map(CreateAuthorRequest::getAuthorInfo)
                     .orElse(null);
 
             if (isNull(payload)) {
                 return IntegrationMessage.errorResponse("Payload is not present", request);
             }
 
-            Person person = personService.getById(payload);
+            Author newAuthor = authorService.createAuthor(payload);
 
-            return IntegrationMessage.successResponse(person, request);
+            return IntegrationMessage.successResponse(newAuthor, request);
         } catch (Exception exception) {
             return IntegrationMessage.exceptionResponse(exception.getMessage(), request);
         }
     }
 }
-

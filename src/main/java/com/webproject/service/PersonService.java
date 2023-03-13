@@ -24,4 +24,15 @@ public class PersonService {
 
         return modelOptional.get();
     }
+
+    public Person getByLogin(String login) {
+        Optional<Person> modelOptional = personRepo.findByLogin(login);
+
+        if (modelOptional.isEmpty()) {
+            String message = String.format("User with login %s not found", login);
+            throw new EntityNotFoundException(message);
+        }
+
+        return modelOptional.get();
+    }
 }

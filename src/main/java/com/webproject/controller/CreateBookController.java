@@ -29,14 +29,14 @@ public class CreateBookController {
                     .orElse(null);
 
             if (isNull(payload)) {
-                return IntegrationMessage.errorResponse("Payload is not present");
+                return IntegrationMessage.errorResponse("Payload is not present", request);
             }
 
             Book newBook = bookService.createNewBook(payload);
 
-            return IntegrationMessage.successResponse(newBook);
+            return IntegrationMessage.successResponse(newBook, request);
         } catch (Exception exception) {
-            return IntegrationMessage.exceptionResponse(exception.getMessage());
+            return IntegrationMessage.exceptionResponse(exception.getMessage(), request);
         }
     }
 }
