@@ -3,8 +3,11 @@ package com.webproject.controller;
 import com.webproject.dto.IntegrationMessage;
 import com.webproject.dto.request.CreateAuthorRequest;
 import com.webproject.model.Author;
+import com.webproject.model.Role;
 import com.webproject.service.AuthorService;
+import com.webproject.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +24,7 @@ public class CreateAuthorController {
     private final AuthorService authorService;
 
     @PostMapping(path = "/author/create")
-    public IntegrationMessage createAuthor(@RequestBody IntegrationMessage<CreateAuthorRequest> request) {
+    public IntegrationMessage createAuthor(@RequestBody IntegrationMessage<CreateAuthorRequest> request, @AuthenticationPrincipal UserDetailsServiceImpl.UserDetailsImpl person) {
         try {
             CreateAuthorRequest.AuthorInfo payload = Optional.ofNullable(request)
                     .map(IntegrationMessage::getPayload)
@@ -30,6 +33,10 @@ public class CreateAuthorController {
 
             if (isNull(payload)) {
                 return IntegrationMessage.errorResponse("Payload is not present", request);
+            }
+
+            if (person.getAuthorities().stream().map(el -> el.getAuthority()).filter(el -> el.equals(Role.RoleEnum.ADMIN.name())).findAny().isEmpty()) {
+                return IntegrationMessage.errorResponse("Operation not supported for this person", request);
             }
 
             Author newAuthor = authorService.createAuthor(payload);
