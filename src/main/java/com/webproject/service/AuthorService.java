@@ -9,9 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,14 +27,7 @@ public class AuthorService {
     }
 
     public Author getByName(String name) {
-        Optional<Author> modelOptional = authorRepo.getAuthorByName(name);
-
-        if (modelOptional.isEmpty()) {
-            String message = String.format("Author with name %s not found", name);
-            throw new EntityNotFoundException(message);
-        }
-
-        return modelOptional.get();
+        return authorRepo.getAuthorByName(name);
     }
 
     public List<Author> getAlphabetically(Long count) {

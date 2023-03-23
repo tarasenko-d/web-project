@@ -55,4 +55,8 @@ public class BookService {
 
         return bookRepo.save(book);
     }
+
+    public Book getBooksByTitleAndAuthor(String title, String author) {
+        return bookRepo.findBookByTitleAndAuthorName(title, author);
+    }
 }

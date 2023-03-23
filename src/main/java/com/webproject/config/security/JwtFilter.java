@@ -1,6 +1,7 @@
 package com.webproject.config.security;
 
-import com.webproject.service.UserDetailsServiceImpl;
+import com.webproject.model.Person;
+import com.webproject.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,7 +22,7 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class JwtFilter extends GenericFilterBean {
     private final JwtProvider jwtProvider;
-    private final UserDetailsServiceImpl userDetailsService;
+    private final PersonService personService;
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -29,7 +30,7 @@ public class JwtFilter extends GenericFilterBean {
 
         if (token != null && jwtProvider.validateToken(token)) {
             String userLogin = jwtProvider.getLoginFromToken(token);
-            UserDetails customUserDetails = userDetailsService.loadUserByUsername(userLogin);
+            Person customUserDetails = personService.getByLogin(userLogin);
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(auth);
         }

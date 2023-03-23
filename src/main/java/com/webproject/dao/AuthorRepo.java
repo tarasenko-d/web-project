@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface AuthorRepo extends JpaRepository<Author, Long> {
 
-    Optional<Author> getAuthorByName(String name);
+    Author getAuthorByName(String name);
 }
